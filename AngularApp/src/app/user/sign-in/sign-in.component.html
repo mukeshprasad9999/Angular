@@ -1,0 +1,44 @@
+<div class="panel panel-default allign-center" style="width:300px;" >
+        <div class="panel-heading">Please sign in</div>
+        <div class="panel-body">
+                <div class="alert alert-danger alert-dismissible" *ngIf="IsFailed">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        Incorrect email or password.
+                    </div>
+                <form  (ngSubmit)="Authenticate(UserForm)" [formGroup]="loginFormGroup" #UserForm="ngForm"  novalidate>
+          <div class="form-group">
+              <label>Email</label>
+              <div>
+                  <input type="email" class="form-control" formControlName="Email" required />
+                  <span *ngIf="f.Email.invalid && (f.Email.dirty || UserForm.submitted)" class="text-danger">
+                          <span [hidden]="!f.Email.errors.required" >
+                              Email is required
+                          </span>
+                          <span [hidden]="!f.Email.errors.pattern" >
+                              Email is not in a valid formate.
+                          </span>
+                  </span>
+              </div>
+          </div>
+          <div class="form-group">
+              <label>Password</label>
+              <div>
+                      <input type="password" class="form-control" formControlName="Password" required/>
+                      <span *ngIf="f.Password.invalid && (f.Password.dirty || UserForm.submitted)" class="text-danger">
+                          <span [hidden]="!f.Password.errors.required" >
+                              Password is required
+                          </span>
+                      </span>
+              </div>
+          </div>
+          <button type="submit" class="btn btn-sm btn-primary">Sign in</button>
+          </form>
+        </div>
+        <div class="panel-footer ">
+            Don't have an account!  <a  routerLink='/signup' routerLinkActive='active' class="pull-right" >Sign Up Here</a>
+        </div>
+      </div>
+
+
+  

@@ -1,0 +1,72 @@
+<div class="alert alert-success alert-dismissible" *ngIf="IsSusceed">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Updated Sucessfully!</strong>
+    </div>    
+    <div class="alert alert-danger alert-dismissible" *ngIf="IsFailed">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Oops!</strong>&nbsp;Some issue has occured.
+    </div>
+    <form (ngSubmit)="saveData(UserForm)" [formGroup]="userForm" #UserForm="ngForm" class="form-horizontal"  novalidate>
+        <div class="form-group">
+            <label class="control-label col-md-2">Name</label>
+            <div class="col-md-10">
+                <input type="text" class="form-control" formControlName="Name"  required />
+                <span *ngIf="f.Name.invalid && (f.Name.dirty || UserForm.submitted)" class="text-danger">
+                    <span [hidden]="!f.Name.errors.required" >
+                        Name is required
+                    </span>
+                    <span [hidden]="!f.Name.errors.maxlength" >
+                        Name not greater than 100 character.
+                    </span>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+                <label class="control-label col-md-2">Email</label>
+                <div class="col-md-10">
+                    <input type="email" class="form-control" formControlName="Email" required />
+                    <span *ngIf="f.Email.invalid && (f.Email.dirty || UserForm.submitted)" class="text-danger">
+                            <span [hidden]="!f.Email.errors.required" >
+                                Email is required
+                            </span>
+                            <span [hidden]="!f.Email.errors.pattern" >
+                                Email is not in a valid formate.
+                            </span>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+                <label class="control-label col-md-2">Mobile</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" formControlName="Mobile" />
+                    <span [hidden]="!(f.Mobile.invalid && (f.Mobile.dirty || UserForm.submitted))" class="text-danger" >
+                            Contact number is not valid.
+                    </span>       
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Password</label>
+            <div class="col-md-10">
+                    <input type="text" class="form-control" formControlName="Password" required/>
+                    <span *ngIf="f.Password.invalid && (f.Password.dirty || UserForm.submitted)" class="text-danger">
+                        <span [hidden]="!f.Password.errors.required" >
+                            Password is required
+                        </span>
+                        <span [hidden]="!f.Password.errors.minlength" >
+                            Password must be greater than 5 character.
+                        </span>
+                        <span [hidden]="!f.Password.errors.maxlength" >
+                                Password must be less than 16 character.
+                        </span>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn btn-sm btn-primary">Update</button>
+            </div>
+        </div>
+    
+   </form>
+
+
