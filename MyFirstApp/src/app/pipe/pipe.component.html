@@ -1,0 +1,26 @@
+<div class="panel panel-default">
+    <div class="panel-heading">{{title}}</div>
+    <div class="panel-body table-responsive">
+      <table class="table table-condensed table-hover">
+        <thead>
+          <tr>
+            <th>SN</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Salary</th>
+            <th>DOJ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item  of employees ; let i=index">
+            <td>{{i+1}}</td>
+            <td>{{item.name | uppercase}}</td>
+            <td>{{item.address | uppercase}}</td>
+            <td>{{item.salary | currency:'INR'}}</td>
+            <td>{{item.doj | date:"MM/dd/yy" }}</td>
+          </tr>
+        </tbody>
+      </table>
+      
+    </div>
+</div>

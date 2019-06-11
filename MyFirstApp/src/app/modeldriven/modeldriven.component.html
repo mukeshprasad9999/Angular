@@ -1,0 +1,78 @@
+<form class="form-horizontal" (ngSubmit)="saveData()" [formGroup]="userFormGroup" novalidate>
+    <div class="form-group">
+        <legend>Model Driven Form</legend>
+    </div>
+    <div class="form-group">
+        <label class="control-label">User Name</label>
+        <div>
+            <input type="text" class="form-control" formControlName="UserName"  />
+            <span *ngIf="f.UserName.invalid && (f.UserName.dirty || submitted)" class="text-danger">
+                <span [hidden]="!f.UserName.errors.required" >
+                    Name is required
+                </span>
+                <span [hidden]="!f.UserName.errors.minlength" >
+                    Name must be greater than 4 character.
+                </span>
+            </span>
+        </div>
+    </div>
+    <div class="form-group">
+            <label class="control-label">Email</label>
+            <div>
+                <input type="email" class="form-control" formControlName="Email"  />
+                <span *ngIf="f.Email.invalid && (f.Email.dirty || submitted)" class="text-danger">
+                        <span [hidden]="!f.Email.errors.required" >
+                            Email is required
+                        </span>
+                        <span [hidden]="!f.Email.errors.pattern" >
+                            Email is not in a valid formate.
+                        </span>
+                </span>
+            </div>
+    </div>
+    <div class="form-group">
+            <label class="control-label">Contact</label>
+            <div>
+                <input type="text" class="form-control" formControlName="Contact" />
+                <span [hidden]="!(f.Contact.invalid && (f.Contact.dirty || submitted))" class="text-danger" >
+                        Contact number is not valid.
+                </span>       
+            </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label">Password</label>
+        <div>
+                <input type="text" class="form-control"formControlName="Password" />
+                <span *ngIf="f.Password.invalid && (f.Password.dirty || submitted)" class="text-danger">
+                    <span [hidden]="!f.Password.errors.required" >
+                        Password is required
+                    </span>
+                    <span [hidden]="!f.Password.errors.minlength" >
+                        Password must be greater than 5 character.
+                    </span>
+                    <span [hidden]="!f.Password.errors.maxlength" >
+                            Password must be less than 16 character.
+                    </span>
+                </span>
+            </div>
+    </div>
+    <div class="form-group">
+            <label class="control-label">Accept Terms &nbsp;
+                <input type="checkbox" formControlName="AcceptTerms"  />
+            </label>
+            <div>
+                
+                <span [hidden]="!(f.AcceptTerms.invalid && (f.AcceptTerms.dirty || submitted))" class="text-danger" >
+                        Accept Terms and Conditions.
+                </span>       
+            </div>
+    </div>
+    <div class="form-group">
+        <div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+
+</form>
+
+

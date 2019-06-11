@@ -1,0 +1,52 @@
+<form class="form-horizontal" (ngSubmit)="saveData(UserForm)" #UserForm="ngForm" novalidate>
+  <div class="form-group">
+      <legend>Templete Driven Form</legend>
+  </div>
+  
+  <div class="form-group">
+    <label class="control-label">User Name</label>
+    <div>
+        <input type="text" class="form-control" name="UserName" #UserName="ngModel" ngModel
+        minlength="5" required />
+        <span *ngIf="UserName.invalid && (UserName.dirty || UserForm.submitted)" class="text-danger">
+            <span [hidden]="!UserName.errors.required" >
+                Name is required
+            </span>
+            <span [hidden]="!UserName.errors.minlength" >
+                Name must be greater than 4 character.
+            </span>
+        </span>
+    </div>
+</div>
+
+<div class="form-group">
+        <label class="control-label">Contact</label>
+        <div>
+            <input type="text" class="form-control" name="Contact" #Contact="ngModel"  ngModel
+            pattern="^\d{10}$" />
+            <span [hidden]="!(Contact.invalid && (Contact.dirty || UserForm.submitted))" class="text-danger" >
+                    Contact number is not valid.
+            </span>       
+        </div>
+</div>
+
+<div class="form-group">
+        <label class="control-label">Accept Terms &nbsp;
+            <input type="checkbox" name="AcceptTerms" #AcceptTerms="ngModel" ngModel required />
+        </label>
+        <div>
+            
+            <span [hidden]="!(AcceptTerms.invalid && (AcceptTerms.dirty || UserForm.submitted))" class="text-danger" >
+                    Accept Terms and Conditions.
+            </span>       
+        </div>
+</div>
+<div class="form-group">
+    <div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</div>
+
+</form>
+
+

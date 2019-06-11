@@ -1,0 +1,21 @@
+<div class="form-horizontal">
+    <div class="form-group">
+        <label class="control-label col-md-4">2Way Data Binding</label>
+        <div class="col-md-8">
+            <input type="text" class="form-control" [(ngModel)]="Name" />
+            <!--<span class="text-primary" style="padding: 6px 12px;">{{Name}}</span>-->
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-4">Property Binding</label>
+        <div class="col-md-8">
+            <input type="text" class="form-control" [value]="Name" readonly />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-4 col-md-8">
+            <button type="button" (click)="greet()" class="btn btn-primary">Event Binding</button>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,65 @@
+<div class="form-horizontal">
+    <div class="form-group">
+        <label class="control-label col-md-4">ngIf-else directive</label>
+        <div class="col-md-8">
+            <input type="text" class="form-control" [(ngModel)]="num" />
+            <ng-container *ngIf="num % 2 == 0; else elsePart">
+                <span class="text-primary">Even Number</span>
+            </ng-container>
+            <ng-template #elsePart>
+                <span class="text-primary">Odd Number</span>
+            </ng-template>
+        </div>
+    </div>
+    <!--<div class="form-group" *ngIf="num % 2 == 0">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-8">
+          <span class="text-primary">Even</span>
+        </div>
+    </div>-->
+    <div class="form-group">
+        <label class="control-label col-md-4">ngfor directive</label>
+        <div class="col-md-8">
+            <select class="form-control">
+              <option *ngFor="let color of colors; let i=index"  [value]="i">
+                {{color}}
+              </option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-4">ngswitch directive</label>
+        <div class="col-md-8">
+            <input type="text" class="form-control" [(ngModel)]="alpbabet" style="text-transform: uppercase;" />
+            <span [ngSwitch]="alpbabet">
+            <p *ngSwitchCase="'a'" class="text-primary">
+              Vowel
+            </p>
+            <p *ngSwitchCase="'e'" class="text-primary">
+              Vowel
+            </p>
+            <p *ngSwitchCase="'i'" class="text-primary">
+              Vowel
+            </p>
+            <p *ngSwitchCase="'o'" class="text-primary">
+              Vowel
+            </p>
+            <p *ngSwitchCase="'u'" class="text-primary">
+              Vowel
+            </p>
+            <p *ngSwitchDefault class="text-primary">
+              Consonent
+            </p>
+            </span>
+        </div>
+    </div>
+    <div class="form-group">
+            <label class="control-label col-md-4">Reverse(Custom Pipe)</label>
+            <div class="col-md-8">
+                <input type="text" class="form-control" [(ngModel)]="Name" />
+                <span class="text-primary" style="padding: 6px 12px;">{{Name | reverse}}</span>
+            </div>
+    </div>
+    
+</div>
